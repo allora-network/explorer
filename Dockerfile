@@ -2,11 +2,12 @@ FROM node:21-bookworm-slim as builder
 
 WORKDIR /app
 COPY . /app
-RUN cd /app && yarn
+RUN yarn --ignore-engines && \
+    yarn build
 
-FROM node:21-bookworm-slim 
-WORKDIR /app
+###########
+FROM nginx:1.25-bookworm
 
-COPY --from=builder /app/ /app/
+COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
-ENTRYPOINT ["yarn", "serve", "--host"]
+EXPOSE 80
