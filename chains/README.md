@@ -4,6 +4,7 @@
 
 - Submit configs for mainnet, go to https://github.com/ping-pub/explorer/tree/master/chains/mainnet
 
+*NOTE:* The following Hostname based config selection logic is removed in allora explorer
 - Submit configs for testnet, go to https://github.com/ping-pub/explorer/tree/master/chains/testnet, thess configs will be enabled when you visit the domain starts withs `testnet.*`, for example `https://testnet.ping.pub`
 
 # Sample of Config
