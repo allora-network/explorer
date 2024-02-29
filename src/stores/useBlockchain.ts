@@ -75,6 +75,8 @@ export const useBlockchain = defineStore('blockchain', {
         // } else {
         //   document.body.style.setProperty('--p', '237.65 100% 70%');
         // }
+        document.body.style.setProperty('--p', '154 85% 35%');
+        document.body.style.setProperty('--pc', '0 0% 100%');
         currNavItem = [
           {
             title: this.current?.prettyName || this.chainName || '',
