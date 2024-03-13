@@ -7,10 +7,16 @@
             "address": "https://allora-api.edgenet.allora.network:8443"
         }
     ],
+    "rpc": [
+        {
+            "provider": "upshot",
+            "address": "https://allora-rpc.edgenet.allora.network:8443"
+        }
+    ],
     "sdk_version": "0.45.1",
     "coin_type": "118",
     "min_tx_fee": "800",
-    "addr_prefix": "allora",
+    "addr_prefix": "allo",
     "assets": [
         {
             "base": "uallo",
