@@ -273,17 +273,7 @@ function selected(route: any, nav: NavLink) {
         </a>
 
         <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">Tools</div>
-        <RouterLink
-          to="/wallet/suggest"
-          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
-        >
-          <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
-          <div
-            class="text-base capitalize flex-1 text-gray-600 dark:text-gray-200"
-          >
-            Wallet Helper
-          </div>
-        </RouterLink>
+        
 
         <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
           {{ $t('module.links') }}
@@ -326,6 +316,18 @@ function selected(route: any, nav: NavLink) {
           </div>
         </a>
       </div> -->
+
+      <RouterLink
+        to="/wallet/suggest"
+        class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
+      >
+        <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
+        <div
+          class="text-base capitalize flex-1 text-gray-600 dark:text-gray-200"
+        >
+          Wallet Helper
+        </div>
+      </RouterLink>
     </div>
     <div class="xl:!ml-64 px-3 pt-4">
       <!-- header -->
