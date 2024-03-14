@@ -154,21 +154,23 @@ async function initSnap() {
 function suggest() {
   switch (wallet.value) {
     case 'keplr':
+      // @ts-ignore
       if (window.keplr) {
         // @ts-ignore
         window.keplr
           .experimentalSuggestChain(JSON.parse(conf.value))
-          .catch((e) => {
+          .catch((e: any) => {
             error.value = e;
           });
       }
       break;
     case 'leap':
+      // @ts-ignore
       if (window.leap) {
         // @ts-ignore
         window.leap
           .experimentalSuggestChain(JSON.parse(conf.value))
-          .catch((e) => {
+          .catch((e: any) => {
             error.value = e;
           });
       }
