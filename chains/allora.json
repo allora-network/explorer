@@ -4,13 +4,13 @@
     "api": [
         {
             "provider": "upshot",
-            "address": "https://allora-api.edgenet.allora.network:8443"
+            "address": "https://allora-api.edgenet.allora.network"
         }
     ],
     "rpc": [
         {
             "provider": "upshot",
-            "address": "https://allora-rpc.edgenet.allora.network:8443"
+            "address": "https://allora-rpc.edgenet.allora.network"
         }
     ],
     "sdk_version": "0.45.1",
