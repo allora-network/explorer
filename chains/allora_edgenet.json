@@ -1,0 +1,28 @@
+{
+    "chain_name": "allora-edgenet",
+    "registry_name": "Allora-edgenet",
+    "api": [
+        {
+            "provider": "upshot",
+            "address": "https://allora-api.edgenet.allora.network"
+        }
+    ],
+    "rpc": [
+        {
+            "provider": "upshot",
+            "address": "https://allora-rpc.edgenet.allora.network"
+        }
+    ],
+    "sdk_version": "0.45.1",
+    "coin_type": "118",
+    "min_tx_fee": "800",
+    "addr_prefix": "allo",
+    "assets": [
+        {
+            "base": "uallo",
+            "symbol": "ALLO",
+            "exponent": "6"
+        }
+    ],
+    "logo": "/chain-logos/allora.png"
+}
