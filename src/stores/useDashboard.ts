@@ -346,6 +346,7 @@ export const useDashboard = defineStore('dashboard', {
       this.status = LoadingStatus.Loaded;
     },
     async loadLocalConfig(network: NetworkType) {
+      const config: Record<string, ChainConfig> = {};
       // use testnet chain as default
       const chainName = import.meta.env.VITE_ALLORA_CHAIN || 'testnet';
       const source: Record<string, LocalConfig> = import.meta.glob(
