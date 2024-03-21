@@ -1,3 +1,7 @@
+# CI/Cd
+
+Chain configs copied here on CI/CD from `chains-all` one after another and build different docker images per each config, docker tag preffixed with the config name.
+
 # Directory Layout
 
 ** if you want to list your blockhain on ping.pub, please submit your configure on https://github.com/ping-pub/ping.pub.git **
