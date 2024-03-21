@@ -41,7 +41,7 @@ jobs:
             EXTRA_IMAGE_TAGS="${EXTRA_IMAGE_TAGS};latest"
           fi
 
-          mkdir chains
+          mkdir -p chains
           for config in chains-all/*.json; do
             cp $config chains/$(basename $config)
             CHAIN=$(basename $config .json)
