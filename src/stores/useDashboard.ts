@@ -328,26 +328,24 @@ export const useDashboard = defineStore('dashboard', {
     },
     async loadingFromLocal() {
       const source: Record<string, LocalConfig> = import.meta.glob(
-        '../../chains/*.json',
+        '../../chains-all/*.json',
         { eager: true }
       );
-      Object.values<LocalConfig>(source)
-        .forEach((x: LocalConfig) => {
-          this.chains[x.chain_name] = fromLocal(x);
-        });
+      Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
+        this.chains[x.chain_name] = fromLocal(x);
+      });
       this.setupDefault();
       this.status = LoadingStatus.Loaded;
     },
     async loadLocalConfig(network: NetworkType) {
       const config: Record<string, ChainConfig> = {};
       const source: Record<string, LocalConfig> = import.meta.glob(
-        '../../chains/*.json',
+        '../../chains-all/*.json',
         { eager: true }
       );
-      Object.values<LocalConfig>(source)
-        .forEach((x: LocalConfig) => {
-          config[x.chain_name] = fromLocal(x);
-        });
+      Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
+        config[x.chain_name] = fromLocal(x);
+      });
       return config;
     },
     setupDefault() {
