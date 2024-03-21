@@ -327,18 +327,11 @@ export const useDashboard = defineStore('dashboard', {
       }
     },
     async loadingFromLocal() {
-      // use testnet chain as default
-      const chainName = import.meta.env.VITE_ALLORA_CHAIN || 'testnet';
       const source: Record<string, LocalConfig> = import.meta.glob(
         '../../chains/*.json',
         { eager: true }
       );
       Object.values<LocalConfig>(source)
-        .filter(
-          (source_data) =>
-            source_data.chain_name?.toLowerCase() ===
-            `allora-${chainName.toLowerCase()}`
-        )
         .forEach((x: LocalConfig) => {
           this.chains[x.chain_name] = fromLocal(x);
         });
@@ -347,20 +340,13 @@ export const useDashboard = defineStore('dashboard', {
     },
     async loadLocalConfig(network: NetworkType) {
       const config: Record<string, ChainConfig> = {};
-      // use testnet chain as default
-      const chainName = import.meta.env.VITE_ALLORA_CHAIN || 'testnet';
       const source: Record<string, LocalConfig> = import.meta.glob(
         '../../chains/*.json',
         { eager: true }
       );
       Object.values<LocalConfig>(source)
-        .filter(
-          (source_data) =>
-            source_data.chain_name?.toLowerCase() ===
-            `allora-${chainName.toLowerCase()}`
-        )
         .forEach((x: LocalConfig) => {
-          this.chains[x.chain_name] = fromLocal(x);
+          config[x.chain_name] = fromLocal(x);
         });
       return config;
     },
