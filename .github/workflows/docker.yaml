@@ -41,8 +41,9 @@ jobs:
             EXTRA_IMAGE_TAGS="${EXTRA_IMAGE_TAGS};latest"
           fi
 
-          mkdir -p chains
           for config in chains-all/*.json; do
+            rm -rf chains
+            mkdir -p chains
             cp $config chains/$(basename $config)
             CHAIN=$(basename $config .json)
             # Build a docker container and push it to Docker Hub.
@@ -54,5 +55,4 @@ jobs:
               docker tag $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$IMAGE_TAG $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$tag
               docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$tag
             done
-            rm chains/$(basename $config)
           done
