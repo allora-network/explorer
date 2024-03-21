@@ -328,7 +328,7 @@ export const useDashboard = defineStore('dashboard', {
     },
     async loadingFromLocal() {
       const source: Record<string, LocalConfig> = import.meta.glob(
-        '../../chains-all/*.json',
+        '../../chains/*.json',
         { eager: true }
       );
       Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
@@ -340,7 +340,7 @@ export const useDashboard = defineStore('dashboard', {
     async loadLocalConfig(network: NetworkType) {
       const config: Record<string, ChainConfig> = {};
       const source: Record<string, LocalConfig> = import.meta.glob(
-        '../../chains-all/*.json',
+        '../../chains/*.json',
         { eager: true }
       );
       Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
