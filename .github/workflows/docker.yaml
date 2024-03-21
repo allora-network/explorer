@@ -41,12 +41,18 @@ jobs:
             EXTRA_IMAGE_TAGS="${EXTRA_IMAGE_TAGS};latest"
           fi
 
-          # Build a docker container and push it to Docker Hub.
-          docker build --pull --build-arg "GH_TOKEN=${{ secrets.GH_READONLY_PAT }}" -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$IMAGE_TAG .
-          docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$IMAGE_TAG
+          mkdir chains
+          for config in chains-all/*.json; do
+            cp $config chains/$(basename $config)
+            CHAIN=$(basename $config .json)
+            # Build a docker container and push it to Docker Hub.
+            docker build --pull --build-arg "GH_TOKEN=${{ secrets.GH_READONLY_PAT }}" -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$IMAGE_TAG .
+            docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$IMAGE_TAG
 
-          # Build and PUSH additional tags
-          for tag in $(echo $EXTRA_IMAGE_TAGS| tr ";" "\n"); do
-            docker tag $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$IMAGE_TAG $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$tag
-            docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$tag
+            # Build and PUSH additional tags
+            for tag in $(echo $EXTRA_IMAGE_TAGS| tr ";" "\n"); do
+              docker tag $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$IMAGE_TAG $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$tag
+              docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPOSITORY:$CHAIN-$tag
+            done
+            rm chains/$(basename $config)
           done
