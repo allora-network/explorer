@@ -104,6 +104,7 @@ export interface LocalConfig {
     logo: string;
     symbol: string;
   }[];
+  max_total_supply: string;
   chain_name: string;
   coin_type: string;
   logo: string;
