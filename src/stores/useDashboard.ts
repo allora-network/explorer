@@ -178,7 +178,6 @@ export function fromLocal(lc: LocalConfig): ChainConfig {
   conf.keplrPriceStep = lc.keplr_price_step;
   conf.themeColor = lc.theme_color;
 
-  console.log('$$$$', conf);
   return conf;
 }
 
