@@ -10,7 +10,7 @@ export const useBankStore = defineStore('bankstore', {
       supply: {} as Coin,
       balances: {} as Record<string, Coin[]>,
       totalSupply: { supply: [] as Coin[] },
-      ibcDenoms: {} as Record<string, DenomTrace>
+      ibcDenoms: {} as Record<string, DenomTrace>,
     };
   },
   getters: {
@@ -28,6 +28,10 @@ export const useBankStore = defineStore('bankstore', {
       const denom =
         this.staking.params.bond_denom ||
         this.blockchain.current?.assets[0].base;
+      this.maxTotalSupply = {
+        denom: denom,
+        amount: this.blockchain.current?.maxTotalSupply,
+      } as Coin;
       if (denom) {
         this.blockchain.rpc.getBankSupplyByDenom(denom).then((res) => {
           if (res.amount) this.supply = res.amount;

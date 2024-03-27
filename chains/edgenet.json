@@ -21,8 +21,9 @@
         {
             "base": "uallo",
             "symbol": "ALLO",
-            "exponent": "6"
+            "exponent": "18"
         }
     ],
+    "max_total_supply": "1000000000000000000000000000",
     "logo": "/chain-logos/allora.png"
 }

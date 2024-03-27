@@ -61,6 +61,7 @@ export interface ChainConfig {
   chainId: string;
   coinType: string;
   assets: Asset[];
+  maxTotalSupply: string;
   themeColor?: string;
   features?: string[];
   endpoints: {
@@ -151,6 +152,7 @@ export function fromLocal(lc: LocalConfig): ChainConfig {
       { denom: x.symbol.toLowerCase(), exponent: Number(x.exponent) },
     ],
   }));
+  conf.maxTotalSupply = lc.max_total_supply;
   conf.versions = {
     cosmosSdk: lc.sdk_version,
   };
@@ -174,6 +176,8 @@ export function fromLocal(lc: LocalConfig): ChainConfig {
   conf.keplrFeatures = lc.keplr_features;
   conf.keplrPriceStep = lc.keplr_price_step;
   conf.themeColor = lc.theme_color;
+
+  console.log('$$$$', conf);
   return conf;
 }
 
