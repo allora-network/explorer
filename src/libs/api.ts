@@ -1,7 +1,4 @@
-import {
-  type RequestRegistry,
-  adapter,
-} from './registry';
+import { type RequestRegistry, adapter } from './registry';
 
 export const DEFAULT: RequestRegistry = {
   auth_params: { url: '/cosmos/auth/v1beta1/params', adapter },
@@ -10,7 +7,10 @@ export const DEFAULT: RequestRegistry = {
     url: '/cosmos/auth/v1beta1/accounts/{address}',
     adapter,
   },
-  params: { url: '/cosmos/params/v1beta1/params?subspace={subspace}&key={key}', adapter },
+  params: {
+    url: '/cosmos/params/v1beta1/params?subspace={subspace}&key={key}',
+    adapter,
+  },
   bank_params: { url: '/cosmos/bank/v1beta1/params', adapter },
   bank_balances_address: {
     url: '/cosmos/bank/v1beta1/balances/{address}',
@@ -138,8 +138,8 @@ export const DEFAULT: RequestRegistry = {
   tx_txs_block: { url: '/cosmos/tx/v1beta1/txs/block/{height}', adapter },
   tx_hash: { url: '/cosmos/tx/v1beta1/txs/{hash}', adapter },
 
-  mint_inflation: { url: '/cosmos/mint/v1beta1/inflation', adapter },
-  mint_params: { url: '/cosmos/mint/v1beta1/params', adapter },
+  mint_inflation: { url: '/mint/v1beta1/inflation', adapter },
+  mint_params: { url: '/mint/v1beta1/params', adapter },
   mint_annual_provisions: {
     url: '/cosmos/mint/v1beta1/annual_provisions',
     adapter,
