@@ -7,7 +7,7 @@ import routes from '~pages';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...setupLayouts(routes.filter((r) => !r.meta?.hidden))],
+  routes: [...setupLayouts(routes.filter((r: any) => !r.meta?.hidden))],
 });
 
 //update current blockchain
