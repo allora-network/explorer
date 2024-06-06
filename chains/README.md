@@ -21,7 +21,7 @@ Chain configs copied here on CI/CD from `chains-all` one after another and build
             "address": "https://cosmos.api.ping.pub", 
             "provider": "Ping"
         }
-    ], 
+    ],
     "rpc": [
         {
             "address": "https://cosmos.api.ping.pub", 
