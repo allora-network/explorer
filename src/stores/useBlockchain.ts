@@ -154,7 +154,9 @@ export const useBlockchain = defineStore('blockchain', {
     },
 
     randomEndpoint(chainName: string): Endpoint | undefined {
-      const end = localStorage.getItem(`endpoint-${chainName}`);
+      const end = JSON.stringify(
+        this.dashboard.chains[this.chainName].endpoints.rest?.[0]
+      );
       if (end) {
         return JSON.parse(end);
       } else {
