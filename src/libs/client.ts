@@ -17,7 +17,6 @@ export class BaseRestClient<R extends AbstractRegistry> {
   endpoint: string;
   registry: R;
   constructor(endpoint: string, registry: R) {
-    console.log('New base rest client:', endpoint);
     debugger;
     this.endpoint = endpoint;
     this.registry = registry;
@@ -28,12 +27,9 @@ export class BaseRestClient<R extends AbstractRegistry> {
     query = '',
     adapter?: (source: any) => Promise<T>
   ) {
-    console.log('Request:', request, args, query);
-    console.log('endpoint:', this.endpoint);
     let url = `${request.url.startsWith('http') ? '' : this.endpoint}${
       request.url
     }${query}`;
-    console.log('URL:', url);
     Object.keys(args).forEach((k) => {
       url = url.replace(`{${k}}`, args[k] || '');
     });
