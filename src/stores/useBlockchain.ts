@@ -157,16 +157,7 @@ export const useBlockchain = defineStore('blockchain', {
       const end = JSON.stringify(
         this.dashboard.chains[this.chainName].endpoints.rest?.[0]
       );
-      if (end) {
-        return JSON.parse(end);
-      } else {
-        const all = this.current?.endpoints?.rest;
-        if (all) {
-          const rn = Math.random();
-          const endpoint = all[Math.floor(rn * all.length)];
-          return endpoint;
-        }
-      }
+      return JSON.parse(end);
     },
 
     async randomSetupEndpoint() {
