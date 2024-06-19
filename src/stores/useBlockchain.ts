@@ -154,10 +154,7 @@ export const useBlockchain = defineStore('blockchain', {
     },
 
     randomEndpoint(chainName: string): Endpoint | undefined {
-      const end = JSON.stringify(
-        this.dashboard.chains[this.chainName].endpoints.rest?.[0]
-      );
-      return JSON.parse(end);
+      return this.dashboard.chains[chainName].endpoints.rest?.[0];
     },
 
     async randomSetupEndpoint() {
