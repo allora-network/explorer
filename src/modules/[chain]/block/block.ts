@@ -32,7 +32,7 @@ export const useBlockModule = defineStore('blockModule', {
               });
             } catch (e) {}
           }
-        })
+        }),
       );
       return txs;
     },

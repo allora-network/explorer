@@ -45,7 +45,7 @@ async function initParamsForCosmosWallets() {
   const chain = selected.value;
   if (!chain.endpoints?.rest?.at(0)) throw new Error('Endpoint does not set');
   const client = CosmosRestClient.newDefault(
-    chain.endpoints.rest?.at(0)?.address || ''
+    chain.endpoints.rest?.at(0)?.address || '',
   );
   const b = await client.getBaseBlockLatest();
   const chainid = b.block.header.chain_id;
@@ -57,7 +57,7 @@ async function initParamsForCosmosWallets() {
   };
   const coinDecimals =
     chain.assets[0].denom_units.find(
-      (x) => x.denom === chain.assets[0].symbol.toLowerCase()
+      (x) => x.denom === chain.assets[0].symbol.toLowerCase(),
     )?.exponent || 6;
 
   conf.value = JSON.stringify(
@@ -105,7 +105,7 @@ async function initParamsForCosmosWallets() {
       features: chain.keplrFeatures || [],
     },
     null,
-    '\t'
+    '\t',
   );
 }
 
@@ -115,7 +115,7 @@ async function initSnap() {
 
   if (!chain.endpoints?.rest?.at(0)) throw new Error('Endpoint does not set');
   const client = CosmosRestClient.newDefault(
-    chain.endpoints.rest?.at(0)?.address || ''
+    chain.endpoints.rest?.at(0)?.address || '',
   );
   const b = await client.getBaseBlockLatest();
   const chainId = b.block.header.chain_id;
@@ -147,7 +147,7 @@ async function initSnap() {
       ],
     },
     null,
-    '\t'
+    '\t',
   );
 }
 

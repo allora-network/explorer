@@ -203,7 +203,7 @@ function pathConvert(path: string | undefined) {
   if (path) {
     path = path.replace(
       'https://raw.githubusercontent.com/cosmos/chain-registry/master',
-      'https://registry.ping.pub'
+      'https://registry.ping.pub',
     );
   }
   return path || '';
@@ -216,7 +216,7 @@ export function getLogo(
         png?: string;
         jpeg?: string;
       }
-    | undefined
+    | undefined,
 ) {
   if (conf) {
     return pathConvert(conf.svg || conf.png || conf.jpeg);
@@ -265,7 +265,7 @@ export enum ConfigSource {
 export const useDashboard = defineStore('dashboard', {
   state: () => {
     const favMap = JSON.parse(
-      localStorage.getItem('favoriteMap') || '{"cosmos":true, "osmosis":true}'
+      localStorage.getItem('favoriteMap') || '{"cosmos":true, "osmosis":true}',
     );
     return {
       status: LoadingStatus.Empty,
@@ -313,8 +313,8 @@ export const useDashboard = defineStore('dashboard', {
       const currencies = ['usd, cny']; // usd,cny,eur,jpy,krw,sgd,hkd
       get(
         `https://api.coingecko.com/api/v3/simple/price?include_24hr_change=true&vs_currencies=${currencies.join(
-          ','
-        )}&ids=${coinIds.join(',')}`
+          ',',
+        )}&ids=${coinIds.join(',')}`,
       ).then((x) => {
         this.prices = x;
       });
@@ -333,7 +333,7 @@ export const useDashboard = defineStore('dashboard', {
     async loadingFromLocal() {
       const source: Record<string, LocalConfig> = import.meta.glob(
         '../../chains/*.json',
-        { eager: true }
+        { eager: true },
       );
       Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
         this.chains[x.chain_name] = fromLocal(x);
@@ -345,7 +345,7 @@ export const useDashboard = defineStore('dashboard', {
       const config: Record<string, ChainConfig> = {};
       const source: Record<string, LocalConfig> = import.meta.glob(
         '../../chains/*.json',
-        { eager: true }
+        { eager: true },
       );
       Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
         config[x.chain_name] = fromLocal(x);

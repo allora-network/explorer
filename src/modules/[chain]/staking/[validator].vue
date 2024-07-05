@@ -49,7 +49,7 @@ const addresses = ref(
     operAddress: string;
     hex: string;
     valCons: string;
-  }
+  },
 );
 const selfBonded = ref({} as Delegation);
 
@@ -82,7 +82,7 @@ const selfRate = computed(() => {
   if (selfBonded.value.balance?.amount) {
     return format.calculatePercent(
       selfBonded.value.balance.amount,
-      v.value.tokens
+      v.value.tokens,
     );
   }
   return '-';
@@ -105,7 +105,7 @@ const fetchAvatar = (identity: string) => {
         if (Array.isArray(d.them) && d.them.length > 0) {
           const uri = String(d.them[0]?.pictures?.primary?.url).replace(
             'https://s3.amazonaws.com/keybase_processed_uploads/',
-            ''
+            '',
           );
 
           avatars.value[identity] = uri;
@@ -135,18 +135,18 @@ onMounted(() => {
         loadAvatar(identity.value);
 
       addresses.value.hex = consensusPubkeyToHexAddress(
-        v.value.consensus_pubkey
+        v.value.consensus_pubkey,
       );
       addresses.value.valCons = pubKeyToValcons(
         v.value.consensus_pubkey,
-        blockchain.current?.bech32ConsensusPrefix || ''
+        blockchain.current?.bech32ConsensusPrefix || '',
       );
     });
     blockchain.rpc
       .getDistributionValidatorOutstandingRewards(validator)
       .then((res) => {
         rewards.value = res.rewards?.rewards?.sort(
-          (a, b) => Number(b.amount) - Number(a.amount)
+          (a, b) => Number(b.amount) - Number(a.amount),
         );
         res.rewards?.rewards?.forEach((x) => {
           if (x.denom.startsWith('ibc/')) {
@@ -156,7 +156,7 @@ onMounted(() => {
       });
     blockchain.rpc.getDistributionValidatorCommission(validator).then((res) => {
       commission.value = res.commission?.commission?.sort(
-        (a, b) => Number(b.amount) - Number(a.amount)
+        (a, b) => Number(b.amount) - Number(a.amount),
       );
       res.commission?.commission?.forEach((x) => {
         if (x.denom.startsWith('ibc/')) {
@@ -222,7 +222,7 @@ function loadPowerEvents(p: number, type: EventType) {
     .getTxs(
       "?order_by=2&events={type}.validator='{validator}'",
       { type: selectedEventType.value, validator },
-      page
+      page,
     )
     .then((res) => {
       events.value = res;
@@ -236,7 +236,7 @@ function pagePowerEvents(page: number) {
 pagePowerEvents(1);
 
 function mapEvents(
-  events: { type: string; attributes: { key: string; value: string }[] }[]
+  events: { type: string; attributes: { key: string; value: string }[] }[],
 ) {
   const attributes = events
     .filter((x) => x.type === selectedEventType.value)
@@ -245,8 +245,8 @@ function mapEvents(
         x.attributes.findIndex(
           (attr) =>
             attr.value === validator ||
-            attr.value === toBase64(stringToUint8Array(validator))
-        ) > -1
+            attr.value === toBase64(stringToUint8Array(validator)),
+        ) > -1,
     )
     .map((x) => {
       // check if attributes need to decode
@@ -259,7 +259,7 @@ function mapEvents(
       } else
         x.attributes.forEach((attr) => {
           output[uint8ArrayToString(fromBase64(attr.key))] = uint8ArrayToString(
-            fromBase64(attr.value)
+            fromBase64(attr.value),
           );
         });
       return output;
@@ -271,7 +271,7 @@ function mapEvents(
 function mapDelegators(messages: any[]) {
   if (!messages) return [];
   return Array.from(
-    new Set(messages.map((x) => x.delegator_address || x.grantee))
+    new Set(messages.map((x) => x.delegator_address || x.grantee)),
   );
 }
 </script>
@@ -384,7 +384,7 @@ function mapDelegators(messages: any[]) {
                         amount: v.validator_bond_shares,
                         denom: staking.params.bond_denom,
                       },
-                      false
+                      false,
                     )
                   }}
                 </span>
@@ -401,7 +401,7 @@ function mapDelegators(messages: any[]) {
                         amount: v.liquid_shares,
                         denom: staking.params.bond_denom,
                       },
-                      false
+                      false,
                     )
                   }}
                 </span>

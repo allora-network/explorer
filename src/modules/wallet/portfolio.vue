@@ -15,7 +15,7 @@ const conf = ref(
   JSON.parse(localStorage.getItem('imported-addresses') || '{}') as Record<
     string,
     AccountEntry[]
-  >
+  >,
 );
 const chainStore = useBlockchain();
 const balances = ref({} as Record<string, Coin[]>);
@@ -54,7 +54,7 @@ const prices = ref(
     roi: string;
     last_updated: string;
     sparkline_in_7d: { prices: number[] };
-  }[]
+  }[],
 );
 
 const loading = ref(0);
@@ -75,7 +75,7 @@ Object.values(conf.value).forEach((imported) => {
         loading.value += 1;
         const endpoint = chainStore.randomEndpoint(x.chainName);
         const client = CosmosRestClient.newDefault(
-          endpoint?.address || x.endpoint
+          endpoint?.address || x.endpoint,
         );
         client
           .getBankBalances(x.address)
@@ -177,7 +177,7 @@ function loadPrice() {
     .map((x) => x.coinId)
     .join(',');
   get(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.value}&ids=${ids}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=14d&locale=en`
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.value}&ids=${ids}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=14d&locale=en`,
   ).then((res) => {
     prices.value = res;
   });
@@ -199,7 +199,7 @@ const changeData = computed(() => {
       const marketData: any = prices.value.find((x) => x.id === token.coinId);
       if (marketData) {
         return marketData.sparkline_in_7d?.price.map(
-          (p: number) => p * token.qty
+          (p: number) => p * token.qty,
         ) as number[];
       }
       return [];
@@ -308,7 +308,7 @@ const currencySign = computed(() => {
             :series="Object.values(tokenValues)"
             :labels="
               Object.keys(tokenValues).map((x) =>
-                format.tokenDisplayDenom(x)?.toUpperCase()
+                format.tokenDisplayDenom(x)?.toUpperCase(),
               )
             "
           />

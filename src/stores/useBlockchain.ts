@@ -89,7 +89,7 @@ export const useBlockchain = defineStore('blockchain', {
               .filter(
                 (x) =>
                   !this.current?.features ||
-                  this.current.features.includes(String(x.meta.i18n))
+                  this.current.features.includes(String(x.meta.i18n)),
               ) // filter none-custom module
               .map((x) => ({
                 title: `module.${x.meta.i18n}`,
@@ -168,7 +168,7 @@ export const useBlockchain = defineStore('blockchain', {
       this.rpc = CosmosRestClient.newStrategy(endpoint.address, this.current);
       localStorage.setItem(
         `endpoint-${this.chainName}`,
-        JSON.stringify(endpoint)
+        JSON.stringify(endpoint),
       );
     },
     async setCurrent(name: string) {
@@ -180,7 +180,7 @@ export const useBlockchain = defineStore('blockchain', {
       // Find the case-sensitive name for the chainName, else simply use the parameter-value.
       const caseSensitiveName =
         Object.keys(this.dashboard.chains).find(
-          (x) => x.toLowerCase() === name.toLowerCase()
+          (x) => x.toLowerCase() === name.toLowerCase(),
         ) || name;
 
       // Update chainName if needed

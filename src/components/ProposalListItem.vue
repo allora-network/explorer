@@ -94,8 +94,8 @@ function metaItem(metadata: string | undefined): {
                   statusMap?.[item?.status] === 'PASSED'
                     ? 'text-yes'
                     : statusMap?.[item?.status] === 'REJECTED'
-                    ? 'text-no'
-                    : 'text-info'
+                      ? 'text-no'
+                      : 'text-info'
                 "
               >
                 <div
@@ -104,8 +104,8 @@ function metaItem(metadata: string | undefined): {
                     statusMap?.[item?.status] === 'PASSED'
                       ? 'bg-yes'
                       : statusMap?.[item?.status] === 'REJECTED'
-                      ? 'bg-no'
-                      : 'bg-info'
+                        ? 'bg-no'
+                        : 'bg-info'
                   "
                 ></div>
                 <div class="text-xs">
@@ -202,8 +202,8 @@ function metaItem(metadata: string | undefined): {
                 statusMap?.[item?.status] === 'PASSED'
                   ? 'text-yes'
                   : statusMap?.[item?.status] === 'REJECTED'
-                  ? 'text-no'
-                  : 'text-info'
+                    ? 'text-no'
+                    : 'text-info'
               "
             >
               <div
@@ -212,8 +212,8 @@ function metaItem(metadata: string | undefined): {
                   statusMap?.[item?.status] === 'PASSED'
                     ? 'bg-yes'
                     : statusMap?.[item?.status] === 'REJECTED'
-                    ? 'bg-no'
-                    : 'bg-info'
+                      ? 'bg-no'
+                      : 'bg-info'
                 "
               ></div>
               <div class="text-xs flex items-center">
@@ -261,7 +261,7 @@ function metaItem(metadata: string | undefined): {
                 proposalInfo?.content?.description ||
                   proposalInfo?.summary ||
                   metaItem(proposalInfo?.metadata)?.summary,
-                'horizontal'
+                'horizontal',
               )
             "
             :value="

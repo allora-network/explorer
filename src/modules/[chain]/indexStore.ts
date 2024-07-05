@@ -161,7 +161,7 @@ export const useIndexModule = defineStore('module-index', {
           color: 'error',
           icon: 'mdi-human-queue',
           stats: String(
-            base?.latest?.block?.last_commit?.signatures.length || 0
+            base?.latest?.block?.last_commit?.signatures.length || 0,
           ),
           change: 0,
         },
@@ -204,8 +204,8 @@ export const useIndexModule = defineStore('module-index', {
           stats: formatter.formatTokens(
             // @ts-ignore
             this.communityPool?.filter(
-              (x: Coin) => x.denom === staking.params.bond_denom
-            )
+              (x: Coin) => x.denom === staking.params.bond_denom,
+            ),
           ),
           change: 0,
         },
