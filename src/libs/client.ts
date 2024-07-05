@@ -17,7 +17,6 @@ export class BaseRestClient<R extends AbstractRegistry> {
   endpoint: string;
   registry: R;
   constructor(endpoint: string, registry: R) {
-    debugger;
     this.endpoint = endpoint;
     this.registry = registry;
   }
@@ -25,7 +24,7 @@ export class BaseRestClient<R extends AbstractRegistry> {
     request: Request<T>,
     args: Record<string, any>,
     query = '',
-    adapter?: (source: any) => Promise<T>
+    adapter?: (source: any) => Promise<T>,
   ) {
     let url = `${request.url.startsWith('http') ? '' : this.endpoint}${
       request.url
@@ -67,7 +66,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
       if (!req && chain.versions?.cosmosSdk) {
         req = findApiProfileBySDKVersion(
           localStorage.getItem(`sdk_version_${chain.chainName}`) ||
-            chain.versions?.cosmosSdk
+            chain.versions?.cosmosSdk,
         );
       }
     }
@@ -111,7 +110,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
           url: '/cosmos/bank/v1beta1/supply/by_denom?denom={denom}',
           adapter,
         } as Request<{ amount: Coin }>,
-        { denom }
+        { denom },
       );
     }
     return supply;
@@ -136,7 +135,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
   async getDistributionValidatorOutstandingRewards(validator_address: string) {
     return this.request(
       this.registry.distribution_validator_outstanding_rewards,
-      { validator_address }
+      { validator_address },
     );
   }
   async getDistributionValidatorSlashes(validator_address: string) {
@@ -195,7 +194,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
               source.tally.no_with_veto || source.tally.no_with_veto_count,
           },
         });
-      }
+      },
     );
   }
   async getGovProposalVotes(proposal_id: string, page?: PageRequest) {
@@ -205,7 +204,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
     return this.request(
       this.registry.gov_proposals_votes,
       { proposal_id },
-      query
+      query,
     );
   }
   async getGovProposalVotesVoter(proposal_id: string, voter: string) {
@@ -249,7 +248,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
   }
   async getStakingValidatorsDelegations(
     validator_addr: string,
-    page?: PageRequest
+    page?: PageRequest,
   ) {
     if (!page) {
       page = new PageRequest();
@@ -263,25 +262,25 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
       {
         validator_addr,
       },
-      query
+      query,
     );
   }
   async getStakingValidatorsDelegationsDelegator(
     validator_addr: string,
-    delegator_addr: string
+    delegator_addr: string,
   ) {
     return this.request(
       this.registry.staking_validators_delegations_delegator,
-      { validator_addr, delegator_addr }
+      { validator_addr, delegator_addr },
     );
   }
   async getStakingValidatorsDelegationsUnbonding(
     validator_addr: string,
-    delegator_addr: string
+    delegator_addr: string,
   ) {
     return this.request(
       this.registry.staking_validators_delegations_unbonding_delegations,
-      { validator_addr, delegator_addr }
+      { validator_addr, delegator_addr },
     );
   }
 
@@ -305,7 +304,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
       {
         height,
       },
-      query
+      query,
     );
   }
   async getBaseValidatorsetLatest(offset: number) {
@@ -313,7 +312,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
     return this.request(
       this.registry.base_tendermint_validatorsets_latest,
       {},
-      query
+      query,
     );
   }
   // tx
@@ -333,7 +332,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
     return this.request(
       this.registry.tx_txs,
       params,
-      `${query}&${page.toQueryString()}`
+      `${query}&${page.toQueryString()}`,
     );
   }
   async getTxsAt(height: string | number) {
@@ -366,19 +365,19 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
     return this.request(
       this.registry.ibc_core_connection_connections,
       {},
-      query
+      query,
     );
   }
   async getIBCConnectionsById(connection_id: string) {
     return this.request(
       this.registry.ibc_core_connection_connections_connection_id,
-      { connection_id }
+      { connection_id },
     );
   }
   async getIBCConnectionsClientState(connection_id: string) {
     return this.request(
       this.registry.ibc_core_connection_connections_connection_id_client_state,
-      { connection_id }
+      { connection_id },
     );
   }
   async getIBCConnectionsChannels(connection_id: string) {
@@ -392,7 +391,7 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
   async getIBCChannelAcknowledgements(channel_id: string, port_id: string) {
     return this.request(
       this.registry.ibc_core_channel_channels_acknowledgements,
-      { channel_id, port_id }
+      { channel_id, port_id },
     );
   }
   async getIBCChannelNextSequence(channel_id: string, port_id: string) {
@@ -403,11 +402,11 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
   }
   async getInterchainSecurityValidatorRotatedKey(
     chain_id: string,
-    provider_address: string
+    provider_address: string,
   ) {
     return this.request(
       this.registry.interchain_security_ccv_provider_validator_consumer_addr,
-      { chain_id, provider_address }
+      { chain_id, provider_address },
     );
   }
 }

@@ -92,7 +92,7 @@ export const useParamStore = defineStore('paramstore', {
       try {
         const res = await this.getBaseTendermintBlockLatest();
         const height = this.chain.items.findIndex(
-          (x) => x.subtitle === 'height'
+          (x) => x.subtitle === 'height',
         );
         this.chain.title = `Chain ID: ${res.block.header.chain_id}`;
         this.chain.items[height].value = res.block.header.height;
@@ -115,7 +115,7 @@ export const useParamStore = defineStore('paramstore', {
         .filter((item: any) => {
           if (
             !['min_commission_rate', 'min_self_delegation'].includes(
-              item.subtitle
+              item.subtitle,
             )
           )
             return item;
@@ -126,24 +126,24 @@ export const useParamStore = defineStore('paramstore', {
           const amount = resArr[1]?.amount?.amount;
           const assets = this.blockchain.current?.assets;
           const bondedAndSupply = this.chain.items.findIndex(
-            (x) => x.subtitle === 'bonded_and_supply'
+            (x) => x.subtitle === 'bonded_and_supply',
           );
           this.chain.items[bondedAndSupply].value = `${formatNumber(
             formatTokenAmount(assets, pool.bonded_tokens, 2, bond_denom, false),
             true,
-            0
+            0,
           )}/${formatNumber(
             formatTokenAmount(assets, amount, 2, bond_denom, false),
             true,
-            0
+            0,
           )}`;
           const bondedRatio = this.chain.items.findIndex(
-            (x) => x.subtitle === 'bonded_ratio'
+            (x) => x.subtitle === 'bonded_ratio',
           );
           this.chain.items[bondedRatio].value = `${percent(
-            Number(pool.bonded_tokens) / Number(amount)
+            Number(pool.bonded_tokens) / Number(amount),
           )}%`;
-        }
+        },
       );
     },
     async handleMintParam() {
@@ -167,7 +167,7 @@ export const useParamStore = defineStore('paramstore', {
     async handleDistributionParams() {
       const res = await this.getDistributionParams();
       this.distribution.items = Object.entries(res.params).map(
-        ([key, value]) => ({ subtitle: key, value: value })
+        ([key, value]) => ({ subtitle: key, value: value }),
       );
     },
     async handleGovernanceParams() {
@@ -194,13 +194,16 @@ export const useParamStore = defineStore('paramstore', {
     async handleAbciInfo() {
       const res = await this.fetchAbciInfo();
 
-      localStorage.setItem(`sdk_version_${this.blockchain.chainName}`, res.application_version?.cosmos_sdk_version);
-      
+      localStorage.setItem(
+        `sdk_version_${this.blockchain.chainName}`,
+        res.application_version?.cosmos_sdk_version,
+      );
+
       this.appVersion.items = Object.entries(res.application_version).map(
-        ([key, value]) => ({ subtitle: key, value: value })
+        ([key, value]) => ({ subtitle: key, value: value }),
       );
       this.nodeVersion.items = Object.entries(res.default_node_info).map(
-        ([key, value]) => ({ subtitle: key, value: value })
+        ([key, value]) => ({ subtitle: key, value: value }),
       );
     },
     async getBaseTendermintBlockLatest() {

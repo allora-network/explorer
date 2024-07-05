@@ -1,9 +1,4 @@
-import {
-  fromBase64,
-  fromBech32,
-  toBech32,
-  toHex,
-} from '@cosmjs/encoding';
+import { fromBase64, fromBech32, toBech32, toHex } from '@cosmjs/encoding';
 import { Ripemd160, sha256 } from '@cosmjs/crypto';
 
 export function decodeAddress(address: string) {
@@ -44,7 +39,7 @@ export function consensusPubkeyToHexAddress(consensusPubkey?: {
 
 export function pubKeyToValcons(
   consensusPubkey: { '@type': string; key: string },
-  prefix: string
+  prefix: string,
 ) {
   if (consensusPubkey && consensusPubkey.key) {
     const pubkey = fromBase64(consensusPubkey.key);

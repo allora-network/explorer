@@ -440,7 +440,7 @@ const amount = computed({
                 >
                   {{
                     format.validatorFromBech32(
-                      item?.delegation?.validator_address
+                      item?.delegation?.validator_address,
                     )
                   }}
                 </RouterLink>
@@ -452,8 +452,8 @@ const amount = computed({
                     walletStore?.rewards?.rewards?.find(
                       (el) =>
                         el?.validator_address ===
-                        item?.delegation?.validator_address
-                    )?.reward
+                        item?.delegation?.validator_address,
+                    )?.reward,
                   )
                 }}
               </td>
@@ -468,7 +468,7 @@ const amount = computed({
                         {
                           validator_address: item.delegation.validator_address,
                         },
-                        updateState
+                        updateState,
                       )
                     "
                   >
@@ -483,7 +483,7 @@ const amount = computed({
                         {
                           validator_address: item.delegation.validator_address,
                         },
-                        updateState
+                        updateState,
                       )
                     "
                   >

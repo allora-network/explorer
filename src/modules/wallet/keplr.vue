@@ -18,7 +18,7 @@ async function initParamsForKeplr() {
   const chain = selected.value;
   if (!chain.endpoints?.rest?.at(0)) throw new Error('Endpoint does not set');
   const client = CosmosRestClient.newDefault(
-    chain.endpoints.rest?.at(0)?.address || ''
+    chain.endpoints.rest?.at(0)?.address || '',
   );
   const b = await client.getBaseBlockLatest();
   const chainid = b.block.header.chain_id;
@@ -30,7 +30,7 @@ async function initParamsForKeplr() {
   };
   const coinDecimals =
     chain.assets[0].denom_units.find(
-      (x) => x.denom === chain.assets[0].symbol.toLowerCase()
+      (x) => x.denom === chain.assets[0].symbol.toLowerCase(),
     )?.exponent || 6;
   conf.value = JSON.stringify(
     {
@@ -77,7 +77,7 @@ async function initParamsForKeplr() {
       features: chain.keplrFeatures || [],
     },
     null,
-    '\t'
+    '\t',
   );
 }
 

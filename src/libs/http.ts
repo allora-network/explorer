@@ -2,7 +2,7 @@ import fetch from 'cross-fetch';
 
 export async function fetchData<T>(
   url: string,
-  adapter: (source: any) => Promise<T>
+  adapter: (source: any) => Promise<T>,
 ): Promise<T> {
   const response = await fetch(url);
   if (!response.ok) {
@@ -29,11 +29,15 @@ try {
 }
 // */
 export async function get(url: string) {
-  return (await fetch(url, {referrerPolicy: 'origin-when-cross-origin'})).json();
+  return (
+    await fetch(url, { referrerPolicy: 'origin-when-cross-origin' })
+  ).json();
 }
 
 export async function getB(url: string) {
-  return (await fetch(url, {referrerPolicy: 'origin-when-cross-origin'})).arrayBuffer();
+  return (
+    await fetch(url, { referrerPolicy: 'origin-when-cross-origin' })
+  ).arrayBuffer();
 }
 
 export async function post(url: string, data: any) {

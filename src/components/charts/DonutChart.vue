@@ -15,6 +15,7 @@ const expenseRationChartConfig = computed(() => {
 </script>
 
 <template>
+  {{ console.log('asdjknajsd', expenseRationChartConfig) }}
   <ApexCharts
     type="donut"
     height="410"
