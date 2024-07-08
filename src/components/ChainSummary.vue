@@ -20,7 +20,7 @@ const addFavor = (e: Event) => {
     !dashboardStore?.favoriteMap?.[props.name];
   window.localStorage.setItem(
     'favoriteMap',
-    JSON.stringify(dashboardStore.favoriteMap)
+    JSON.stringify(dashboardStore.favoriteMap),
   );
 };
 </script>
