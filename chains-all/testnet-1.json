@@ -4,7 +4,7 @@
     "api": [
         {
             "provider": "upshot",
-            "address": "http://sentries-api.testnet-1.testnet.allora.network"
+            "address": "https://sentries-api.testnet-1.testnet.allora.network"
         }
     ],
     "rpc": [
