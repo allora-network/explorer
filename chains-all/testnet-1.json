@@ -4,13 +4,13 @@
     "api": [
         {
             "provider": "upshot",
-            "address": "https://sentries-api.testnet-1.testnet.allora.network"
+            "address": "https://allora-api.testnet.allora.network"
         }
     ],
     "rpc": [
         {
             "provider": "upshot",
-            "address": "https://sentries-rpc.testnet-1.testnet.allora.network"
+            "address": "https://allora-api.testnet.allora.network"
         }
     ],
     "sdk_version": "0.45.1",
