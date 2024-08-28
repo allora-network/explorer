@@ -257,7 +257,7 @@ loadAvatars();
 <template>
   <div>
     <div class="bg-base-100 rounded-lg grid sm:grid-cols-1 md:grid-cols-4 p-4">
-      <div class="flex">
+      <!-- <div class="flex">
         <span>
           <div
             class="relative w-9 h-9 rounded overflow-hidden flex items-center justify-center mr-2"
@@ -272,7 +272,7 @@ loadAvatars();
           <div class="font-bold">{{ format.percent(mintStore.inflation) }}</div>
           <div class="text-xs">{{ $t('staking.inflation') }}</div>
         </span>
-      </div>
+      </div> -->
       <div class="flex">
         <span>
           <div
