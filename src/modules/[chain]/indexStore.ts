@@ -190,13 +190,14 @@ export const useIndexModule = defineStore('module-index', {
           }),
           change: 0,
         },
-        {
-          title: 'Inflation',
-          color: 'success',
-          icon: 'mdi-chart-multiple',
-          stats: formatter.formatDecimalToPercent(mintStore.inflation),
-          change: 0,
-        },
+        // Temporarily remove the misleading inflation metric
+        // {
+        //   title: 'Inflation',
+        //   color: 'success',
+        //   icon: 'mdi-chart-multiple',
+        //   stats: formatter.formatDecimalToPercent(mintStore.inflation),
+        //   change: 0,
+        // },
         {
           title: 'Community Pool',
           color: 'primary',
