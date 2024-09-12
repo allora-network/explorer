@@ -4,13 +4,13 @@
     "api": [
         {
             "provider": "upshot",
-            "address": "https://allora-api.testnet.allora.network"
+            "address": "https://testnet-allora-rest.rhino-apis.com/"
         }
     ],
     "rpc": [
         {
             "provider": "upshot",
-            "address": "https://allora-rpc.testnet.allora.network"
+            "address": "https://testnet-allora-rpc.rhino-apis.com"
         }
     ],
     "sdk_version": "0.45.1",
