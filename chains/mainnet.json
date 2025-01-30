@@ -4,7 +4,7 @@
     "api": [
         {
             "provider": "upshot",
-            "address": "https://mainnet-allora-rest.rhino-apis.com/"
+            "address": "https://allora-api.mainnet.allora.network"
         }
     ],
     "sdk_version": "0.45.1",
