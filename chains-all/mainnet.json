@@ -1,0 +1,23 @@
+{
+    "chain_name": "allora-mainnet",
+    "registry_name": "Allora-mainnet",
+    "api": [
+        {
+            "provider": "upshot",
+            "address": "https://allora-api.mainnet.allora.network"
+        }
+    ],
+    "sdk_version": "0.45.1",
+    "coin_type": "118",
+    "min_tx_fee": "800",
+    "addr_prefix": "allo",
+    "assets": [
+        {
+            "base": "uallo",
+            "symbol": "ALLO",
+            "exponent": "18"
+        }
+    ],
+    "max_total_supply": "1000000000000000000000000000",
+    "logo": "/chain-logos/allora.jpeg"
+}
