@@ -1,6 +1,6 @@
 {
     "chain_name": "allora-mainnet",
-    "registry_name": "Allora-mainnet",
+    "registry_name": "allora",
     "api": [
         {
             "provider": "upshot",
