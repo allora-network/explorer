@@ -14,12 +14,17 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
+  // Get all VITE_ prefixed env variables with dummy values
+  const processEnv: Record<string, string> = {
+    VITE_PASSWORD_PROTECTION_ENABLED: 'VITE_PASSWORD_PROTECTION_ENABLED',
+    VITE_SITE_PASSWORD: 'VITE_SITE_PASSWORD',
+  };
+
   return {
     define: {
-      'process.env': {
-        VITE_PASSWORD_PROTECTION_ENABLED: env.VITE_PASSWORD_PROTECTION_ENABLED,
-        VITE_SITE_PASSWORD: env.VITE_SITE_PASSWORD,
-      },
+      'process.env': processEnv,
+      // Also add for import.meta.env access
+      'import.meta.env': processEnv,
     },
     plugins: [
       vue({

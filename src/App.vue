@@ -4,8 +4,6 @@ import { onMounted, ref } from 'vue';
 import TxDialog from './components/TxDialog.vue';
 import PasswordProtectionModal from './components/PasswordProtectionModa.vue';
 
-console.log(process.env);
-
 const passwordProtectionEnabled = Boolean(
   process.env.VITE_PASSWORD_PROTECTION_ENABLED === 'true',
 );
