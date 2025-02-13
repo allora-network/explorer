@@ -13,7 +13,7 @@ const handleSubmit = (e: Event) => {
   e.preventDefault();
 
   // Compare with environment variable
-  if (password.value === import.meta.env.VITE_SITE_PASSWORD) {
+  if (password.value === process.env.VITE_SITE_PASSWORD) {
     props.onSuccess();
     errorMessage.value = '';
   } else {

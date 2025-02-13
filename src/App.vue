@@ -5,7 +5,9 @@ import TxDialog from './components/TxDialog.vue';
 import PasswordProtectionModal from './components/PasswordProtectionModa.vue';
 
 const passwordProtectionEnabled = Boolean(
-  import.meta.env.VITE_PASSWORD_PROTECTION_ENABLED === 'true',
+  String(`${process.env.VITE_PASSWORD_PROTECTION_ENABLED}`)
+    .toLowerCase()
+    .trim() === 'true',
 );
 
 const isAuthenticated = ref(!passwordProtectionEnabled);
