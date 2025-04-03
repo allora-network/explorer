@@ -10,6 +10,12 @@ const router = createRouter({
   routes: [...setupLayouts(routes.filter((r: any) => !r.meta?.hidden))],
 });
 
+router.onError((error, to) => {
+  if (error.message.includes('Failed to fetch dynamically imported module')) {
+    window.location.href = to.fullPath;
+  }
+});
+
 //update current blockchain
 router.beforeEach((to) => {
   const { chain } = to.params;
