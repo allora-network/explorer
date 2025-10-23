@@ -7,6 +7,12 @@
             "address": "https://allora-api.mainnet.allora.network"
         }
     ],
+    "rpc": [
+        {
+            "provider": "upshot",
+            "address": "https://allora-rpc.mainnet.allora.network"
+        }
+    ],
     "sdk_version": "0.45.1",
     "coin_type": "118",
     "min_tx_fee": "800",
